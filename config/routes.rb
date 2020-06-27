@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :users
   root to: 'sessions#new'
   get 'login', to: 'sessions#new'
