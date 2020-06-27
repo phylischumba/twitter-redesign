@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div >
+              <h1>Log in</h1>
+              <%= form_for :session, url: login_path do |f| %>
+                  <%= f.label :username, class: "text-center"%><br />
+                  <%= f.text_field :username, placeholder: 'Your username here' %>
+                  </p>
+
+                <%= f.submit "Log in"  %>
+              
+              <% end %></br>
+              <%= link_to "Sign up", new_user_path %>
+            </div>
+          </div>
+      </div>
+</div>
