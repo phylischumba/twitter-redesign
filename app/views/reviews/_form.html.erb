@@ -1,17 +1,27 @@
-<%= form_with(model: review, local: true) do |form| %>
-  <% if review.errors.any? %>
+<div class= "mb-2">
+<%= form_for @review, url: reviews_path do |form| %>
+  <% if @review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-        <% review.errors.full_messages.each do |message| %>
+        <% @review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+     <div class="bg-white rounded p-2 border">
+      <h6 class="d-block"> Give your review...</h6>
+      <div class = "d-flex align-items-center">
+      <div class="field mr-2 ">
+       
+        <%= form.text_area :Text, placeholder: "Compose your review" %>
+      </div>
+      <div class="actions">
+        <%= form.submit 'Tweet review' %>
+      </div>
+     </div>
+     </div>  
+  <% end %>
+</div>

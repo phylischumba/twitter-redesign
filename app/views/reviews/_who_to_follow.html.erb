@@ -1,0 +1,23 @@
+<div class="column px-2">
+	<nav class="panel">
+		<h5 class="panel-heading font-weight-bold p-3 border-bottom">WHO TO FOLLOW</h5>
+	<% @users.each do |user| if user != current_user%>
+	<div class="panel-block p-2">
+		<article class="media">
+			<div class="media-left">
+				<div class="picture">
+					<%= gravatar_for current_user, size: 60 %>         
+			  </div>
+			</div>
+			<div class="media-content">
+				<div class="content ml-2 d-flex flex-column">	
+						<h6 class="font-weight-bold"><%= user.fullname%></h6>
+						<span>@<%= user.username%></span>
+				</div>
+			</div>
+		</article>
+	</div>
+	<% end %>
+  <% end %>
+  </nav>
+  </div>

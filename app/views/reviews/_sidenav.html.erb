@@ -1,0 +1,37 @@
+<div class="side-nav d-flex flex-column p-4 text-white-50">
+  <div class="current_user d-flex align-items-center">
+    <div class="picture">
+      
+        <%= gravatar_for current_user, size: 60 %>         
+    </div>
+    <h6><%= current_user.fullname.upcase %></h6>
+  </div>
+  <div class="user-followers d-flex pt-3">
+    <div class="pr-3">
+      
+        <p class="text-center">2</p>
+        <p class="">Following</p>
+      </div>
+ 
+   
+      <div class="">
+        <p class="text-center">7</p>
+        <p class="">Followers</p>
+      </div>
+   
+  </div>
+  <div class="side-links text-light">
+    <div class="active p-1">
+      <i class="fas fa-home pr-3"></i>
+      <%= link_to 'HOME', reviews_path, class: "links-path active text-light" %>
+    </div>
+    <div class="p-1">
+      <i class="fas fa-user  pr-3"></i>
+      <%= link_to 'PROFILE', user_path(current_user.id), class: "text-light" %>
+    </div>
+    <div class="d-flex align-items-center p-1">
+      <i class="fas fa-power-off  pr-3"></i>
+      <%=  link_to 'LOGOUT', logout_path, method: :delete, class: "text-light" %>
+    </div>
+  </div>
+</div>

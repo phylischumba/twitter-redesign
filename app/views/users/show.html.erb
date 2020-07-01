@@ -1,14 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class = "container-fluid d-flex">
+  <div class = "row">
+    <div class = "col-2 bg-secondary">
+      <aside>
+        <%= render 'reviews/sidenav'%>
+      </aside>
+      </div>
+        <div class="col-10 p-0">
+          <%= render 'reviews/nav'%> 
+          <div class="row m-0">
+            <div class = "col-8 p-0">
+              <div class = "home-page border-right">
+                <div >
+                  <div class="">
+                    <article>
+                      <img src="https://via.placeholder.com/766x250" alt="">
+                    </article>
+                    <div class="box w-100 bg-light p-3">
+                      <h5 class= "border-bottom pb-2">TWEETS<h5>
+                        <div class="bg-white p-3 border">
+                          <%= form_for (Review.new)  do |f| %>
+                            <%= f.text_area :Text, class: "text-input", placeholder: "Compose new tweet" %>
+                            <%= f.submit "Tweet", class: "text-btn" %>
+                          <% end %>
+                        </div>
+                        <div class="border p-4 bg-white mt-3">
+                        <h4 class="text-primary p-2 border-bottom w-100">ALL TWEETS</h4>
+                          <% @reviews.each do | review | if review.author == current_user%>
+                            <div class="pt-2">   
+                              <article class="media">
+                                <div class="media-left">
+                                  <div class="picture mr-2">
+                                    <%= gravatar_for current_user, size: 60 %>         
+                                  </div>
+                                </div>
+                                <div class="tweet-content">
+                                  <h6><%= review.author.fullname.upcase %></h6>
+                                  <span><%= sanitize review.Text %></span>
+                                </div>
+                              </article>
+                            </div>
+                            <% end %> 
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "col-4 home-page p-4">
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <img src="https://via.placeholder.com/80x80" alt="">
+                <p><%= current_user.fullname %></p>
+                <p><%= current_user.username%></p>
+              </div>
+              <div class="row d-flex border m-3 text-center">
+                <div class = "col-4 border-right pt-2">
+                  <span>23</span>
+                  <p>Tweets</p>
+                </div>
+                <div class = "col-4 border-right pt-2">
+                  <span>23</span>
+                  <p>Following</p>
+                </div>
+                <div class="col-4 pt-2">
+                  <span>23</span>
+                  <p>Followers</p>
+                </div>
+              </div>
+              <h6 class="border-bottom p-2">FOLLOWED BY</h6>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Fullname:</strong>
-  <%= @user.fullname %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+            </div>
+        <div>
+   </div>
