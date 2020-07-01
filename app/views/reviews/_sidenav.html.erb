@@ -9,13 +9,13 @@
   <div class="user-followers d-flex pt-3">
     <div class="pr-3">
       
-        <p class="text-center">2</p>
+        <p class="text-center"><%= current_user.followeds.count%></p>
         <p class="">Following</p>
       </div>
  
    
       <div class="">
-        <p class="text-center">7</p>
+        <p class="text-center"><%= current_user.followers.count%></p>
         <p class="">Followers</p>
       </div>
    
