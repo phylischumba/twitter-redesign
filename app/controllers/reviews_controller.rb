@@ -1,15 +1,19 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+ 
 
   def index
     @reviews = Review.all
+    @review = Review.new
+    # @reviews = Review.order('created_at DESC').includes(:author).limit(10)
+    @users = User.all
   end
 
   def show
   end
 
   def new
-    @review = Review.new
+    @review = Review.new(review_params)
+    @review.author_id = current_user.id
   end
 
   def edit
@@ -17,10 +21,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.author_id = current_user.id
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to reviews_url, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -56,6 +61,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:revew).permit(:Text, :author_id)
+      params.require(:review).permit(:Text, :author_id)
+      
     end
 end
