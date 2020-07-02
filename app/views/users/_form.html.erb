@@ -22,6 +22,15 @@
     <%= form.label :fullname %>
     <%= form.text_field :fullname %>
   </div>
+  <div class="form-group">
+    <%= form.label :Photo %> <br>
+    <%= form.file_field :Photo %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :CoverImage %> <br>
+    <%= form.file_field :CoverImage %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

@@ -7,7 +7,11 @@
 			<article class="media">
 				<div class="media-left">
 					<div class="picture">
-						<%= gravatar_for current_user, size: 50 %>         
+						<% unless user[:Photo].nil? %>
+								<%= image_tag user.Photo.thumb.url %>
+						<% else %>
+							<%= gravatar_for current_user, size: 60 %> 
+						<%end%>         
 					</div>
 				</div>
 				<div class="media-content">

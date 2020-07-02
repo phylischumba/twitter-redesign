@@ -13,7 +13,11 @@
                 <div>
                   <div class="">
                     <article>
-                      <img src="https://via.placeholder.com/845x270" alt="">
+                      <% unless @user[:Coverimage].nil? %>
+                          <%= image_tag @user.CoverImage.standard.url %>
+                      <% else %>
+                        <img src="https://via.placeholder.com/845x270" alt="">
+                      <% end %>
                     </article>
                   <div class="box w-100 bg-light p-3">
                       <h6 class= "border-bottom pb-2 font-weight-bold">WANT TO REVIEW?<h5>
@@ -30,7 +34,11 @@
                               <article class="media">
                                 <div class="media-left">
                                   <div class="picture mr-2">
-                                    <%= gravatar_for @user, size: 60 %>         
+                                      <% unless @user[:Photo].nil? %>
+                                          <%= image_tag @user.Photo.thumb.url %>
+                                      <% else %>
+                                        <%= gravatar_for @user, size: 60 %> 
+                                      <%end%>          
                                   </div>
                                 </div>
                                 <div class="tweet-content">
@@ -111,7 +119,7 @@
                         <h6 class="pl-2"><%= follower.follower.fullname %></h6>
                       </div>
                       <% if current_user.followeds.any? { |person| person.followed_id == follower.follower.id }%>
-                        <%= link_to unfollow_path(follower.follower), method: :delete, class: "follow-icons" do %>
+                        <%= link_to unfollow_path(follower.followed), method: :delete, class: "follow-icons" do %>
                             <i class="fas fa-minus-circle fa-2x text-primary"></i>
                         <% end %>
                       <%else%>

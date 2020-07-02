@@ -18,7 +18,11 @@
 				<article class="media p-2">
 					<div class="media-left">
 						<div class="picture pr-3 ">
-							<%= gravatar_for current_user, size: 50 %>         
+							<% unless review.author[:Photo].nil? %>
+									<%= image_tag review.author.Photo.thumb.url %>
+							<% else %>
+								<%= gravatar_for current_user, size: 60 %> 
+							<%end%>         
 						</div>
 					</div>
 						<div class="tweet-content">

@@ -1,8 +1,11 @@
 <div class="side-nav d-flex flex-column text-white-50 h-100">
   <div class="current_user d-flex justify-content-center p-3">
     <div class="current_picture">
-      
-        <%= gravatar_for current_user, size: 60 %>         
+      <% unless current_user[:Photo].nil? %>
+          <%= image_tag current_user.Photo.thumb.url %>
+      <% else %>
+        <%= gravatar_for current_user, size: 60 %> 
+      <%end%>        
     </div>
     <span class="pt-3 pl-2"><%= current_user.fullname.upcase %></span>
   </div>
