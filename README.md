@@ -4,15 +4,15 @@
 1. The user logs in to the app, only by typing the username
 2. The user is presented with the homepage
     1. Left-side menu.
-    2. *Opinions* tab in the centre
+    2. *Reviews* tab in the centre
     3. Right-side section with *Who to follow
-3. The *Opinions* section includes:
+3. The *Reviews* section includes:
     1. Simple form for creating an opinion.
-    2. List of all opinions (sorted by most recent) that display opinion text and author details.
-4. The *Who to follow* section
-5. When the user opens the profile page they can see:
+    2. List of all reviews (sorted by most recent) that display review text and author details.
+    3. The *Who to follow* section
+4. When the user opens the profile page they can see:
     1. Left-side menu
-    2. Cover picture and *Opinions* tab in the centre
+    2. Cover picture and *Reviews* tab in the centre
     3. Right-side section with *Profile detailed info.*
 6. The *Profile detailed info* section includes:
     1. User photo.
