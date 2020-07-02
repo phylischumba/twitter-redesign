@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :reviews, foreign_key: 'author_id', class_name: 'Review', dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :followeds, foreign_key: 'followed_id', class_name: 'Following'
-  has_many :followers, foreign_key: 'follower_id', class_name: 'Following'
+  has_many :followeds, foreign_key: 'follower_id', class_name: 'Following'
+  has_many :followers, foreign_key: 'followed_id', class_name: 'Following'
   
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 15 }
   validates :fullname, presence: true, length: { maximum: 25 }
