@@ -18,7 +18,7 @@
 #     fill_in 'username', with: user.username
 #     click_button 'Log in'
 #     expect(page).to have_content('Tweets')
-  
+
 #   end
 
 #   scenario 'logout a user' do

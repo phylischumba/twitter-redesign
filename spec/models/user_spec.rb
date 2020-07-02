@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:username) }
     it { should validate_length_of(:username).is_at_most(15) }
     it { should validate_presence_of(:fullname) }
-    it { should validate_length_of(:fullname).is_at_most(25) }   
+    it { should validate_length_of(:fullname).is_at_most(25) }
   end
 
   describe 'associations' do

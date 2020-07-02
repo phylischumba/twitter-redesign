@@ -1,6 +1,4 @@
 class ReviewsController < ApplicationController
- 
-
   def index
     @reviews = Review.all
     @review = Review.new
@@ -8,16 +6,14 @@ class ReviewsController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @review = Review.new(review_params)
     @review.author_id = current_user.id
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @review = Review.new(review_params)
@@ -55,13 +51,12 @@ class ReviewsController < ApplicationController
   end
 
   private
-  
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    def review_params
-      params.require(:review).permit(:Text, :author_id)
-      
-    end
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  def review_params
+    params.require(:review).permit(:Text, :author_id)
+  end
 end
