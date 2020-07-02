@@ -28,11 +28,11 @@
 ## Screenshots of the View
 
 ### Homepage
-![screenshot](app/assets/images/2.png)
-### Log In
-![screenshot](app/assets/images/1.png)
-### Sign Up
-![screenshot](app/assets/images/3.png)
+![screenshot](app/assets/images/homepage.png)
+### Userpage
+![screenshot](app/assets/images/userpage.png)
+### Log Up
+![screenshot](app/assets/images/login.png)
 
 
 ## Built With
@@ -63,7 +63,7 @@ To get a local copy up and running follow these steps:
 ### Usage
 
 - Fork/Clone this project to your local machine
-- Open folder in your local enviroment and run these lines of code to get started:
+- Open folder in your local environment and run these lines of code to get started:
 
 Install gems with:
 
