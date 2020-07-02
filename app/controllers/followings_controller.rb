@@ -6,8 +6,8 @@ class FollowingsController < ApplicationController
   end
 
   def destroy
-    user = Following.find(params[:id]).followed
-    current_user.unfollow(user)
+    @followings = Following.find_friend_to_unfollow(current_user.id, params[:followed_id])
+    @followings.destroy
     redirect_to user_path(params[:followed_id])
   end
 end

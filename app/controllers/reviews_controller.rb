@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
     @review = Review.new
-    # @reviews = Review.order('created_at DESC').includes(:author).limit(10)
+    @reviews = Review.order('created_at DESC').includes(:author)
     @users = User.all
   end
 

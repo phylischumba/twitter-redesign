@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @reviews = Review.all
+    @followers = User.user_followers(params[:id], current_user.id)
   end
 
   def new

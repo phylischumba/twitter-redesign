@@ -3,5 +3,7 @@ class Review < ApplicationRecord
 
   belongs_to :author, dependent: :destroy, class_name: 'User'
   has_many :likes, dependent: :destroy
+
+  validates :Text, presence: true, length: { minimum: 3, maximum: 300 }
   
 end

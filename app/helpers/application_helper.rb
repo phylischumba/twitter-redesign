@@ -18,9 +18,9 @@ module ApplicationHelper
     def like_or_dislike_btn(review)
       like = Like.find_by(review: review, user: current_user)
       if like
-        link_to('Dislike!', review_like_path(id: like.id, review_id: review.id), method: :delete)
+        link_to('Dislike', review_like_path(id: like.id, review_id: review.id), method: :delete)
       else
-        link_to('Like!', review_likes_path(review_id: review.id), method: :review)
+        link_to('Like', review_likes_path(review_id: review.id), method: :review)
       end
     end
   
