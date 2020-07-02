@@ -1,6 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.field {
+  width: 100%;
+  line-height: 1em;
+}
+.text_fields {
+  width: 100%;
+}
+
+.field label {
+  padding-top: 10px;
+}
+
 .side-nav {
   background-color: #213246;
 }

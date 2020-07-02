@@ -1,9 +1,9 @@
-<center class="col-md-4 mx-auto">
+<center class="col-md-4 mx-auto w-100">
 
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <span><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</span>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
@@ -15,24 +15,25 @@
 
   <div class="field">
     <%= form.label :username %>
-    <%= form.text_field :username %>
+    <%= form.text_field :username, class: "text-fields p-2" %>
   </div>
 
   <div class="field">
     <%= form.label :fullname %>
-    <%= form.text_field :fullname %>
+    <%= form.text_field :fullname, class: "text-fields p-2" %>
   </div>
-  <div class="form-group">
+  <div class="file_form pl-5 ml-2">
+  <div class="form-group field">
     <%= form.label :Photo %> <br>
-    <%= form.file_field :Photo %>
+    <%= form.file_field :Photo, class: "text-fields" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group field">
     <%= form.label :CoverImage %> <br>
-    <%= form.file_field :CoverImage %>
+    <%= form.file_field :CoverImage, class: "text-fields" %>
   </div>
-
-  <div class="actions">
+  </div>
+  <div class="actions mr-5 pr-5 pt-2">
     <%= form.submit %>
   </div>
 <% end %>
