@@ -1,6 +1,6 @@
 <div class = "container-fluid d-flex">
-  <div class = "row">
-    <div class = "col-2 bg-secondary">
+  <div class = "row m-0  h-100">
+    <div class = "col-2 side-nav p-0 ">
       <aside>
         <%= render 'reviews/sidenav'%>
       </aside>
@@ -8,23 +8,23 @@
         <div class="col-10 p-0">
           <%= render 'reviews/nav'%> 
           <div class="row m-0">
-            <div class = "col-8 p-0">
+            <div class = "col-9 p-0">
               <div class = "home-page border-right">
                 <div>
                   <div class="">
                     <article>
-                      <img src="https://via.placeholder.com/766x250" alt="">
+                      <img src="https://via.placeholder.com/840x300" alt="">
                     </article>
                   <div class="box w-100 bg-light p-3">
-                      <h5 class= "border-bottom pb-2">TWEETS<h5>
+                      <h6 class= "border-bottom pb-2 font-weight-bold">WANT TO REVIEW?<h5>
                         <div class="bg-white p-3 border">
                           <%= form_for (Review.new)  do |f| %>
-                            <%= f.text_area :Text, class: "text-input", placeholder: "Compose new tweet" %>
-                            <%= f.submit "Tweet", class: "text-btn" %>
+                            <%= f.text_area :Text, class: "w-100", placeholder: "Compose your review" %>
+                            <%= f.submit "Tweet", class: "text-btn btn-primary" %>
                           <% end %>
                         </div>
                         <div class="border p-4 bg-white mt-3">
-                        <h4 class="text-primary p-2 border-bottom w-100">ALL TWEETS</h4>
+                        <h6 class="text-primary p-2 border-bottom font-weight-bold">ALL REVIEWS</h6>
                           <% @reviews.each do |review| if review.author == @user %>
                             <div class="pt-2">   
                               <article class="media">
@@ -34,8 +34,15 @@
                                   </div>
                                 </div>
                                 <div class="tweet-content">
-                                  <h6><%= review.author.fullname.upcase %></h6>
+                                  <span class="d-block font-weight-bold"><%= review.author.fullname.upcase %></span>
                                   <span><%= review.Text %></span>
+                                  <div class='review-liking'>
+                                    <span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
+                                    <span><%= like_or_dislike_btn(review) %></span>
+                                    <% if review.likes.any? %>
+                                      <span><%= "#{pluralize(review.likes.size, 'like')}" %></span>
+                                    <% end %>
+                                  </div>
                                 </div>
                               </article>
                             </div>
@@ -48,35 +55,36 @@
               </div>
             </div>
             
-            <div class = "col-4 home-page p-4">
-              <div class="d-flex flex-column align-items-center justify-content-center">
+            <div class = "col-3 home-page">
+              <div class="d-flex flex-column align-items-center justify-content-center pt-4">
                 <div  class="user-profile">
                   <div class="profile-container">
-                      <div class="follow-icon">
+                      <div class="follow-icon d-flex align-items-center justify-content-center">
+                        
+                        <div class="picture">
+                          
+                            <%= gravatar_for @user, size: 80 %>
+                         
+                        </div>
                         <% unless current_user.id == @user.id %>
-                            <% if current_user.followeds.any? { |person| person.followeds.ids == @user.id }%>
+                            <% if current_user.followeds.any? { |person| person.followed.id == @user.id }%>
                               <%= link_to unfollow_path(@user), method: :delete, class: "font-unfollow-icon" do %>
-                                <i class="fas fa-minus-circle fa-2x"></i>
+                                <i class="fas fa-minus-circle fa-2x text-primary"></i>
                               <% end %>
                             <%else%>
                               <%= link_to follow_path(@user), class: "font-follow-icon" do %>
-                                <i class="fas fa-plus-circle fa-2x"></i>
+                                <i class="fas fa-plus-circle fa-2x text-primary"></i>
                               <% end %>
                             <% end %>
                         <% end %>
-                        <div class="picture">
-                          
-                            <%= gravatar_for @user, size: 100 %>
-                         
-                        </div>
                         
                       </div>
-                         <div class="profile-details text-center">
-                          <h5><%= @user.fullname.upcase %></h5>
-                          <h6>@<%= @user.username %></h6>
-                        </div> 
+                      <div class="profile-details text-center pt-2 pr-3">
+                        <h6><%= @user.fullname.upcase %></h6>
+                        <span>@<%= @user.username %></span>
+                      </div> 
                       </div>
-                      <div class="row d-flex border m-3 text-center">
+                      <div class="row d-flex border text-center w-100 m-0">
                         <div class = "col-4 border-right pt-2">
                           <span><%= @user.reviews.count%></span>
                           <p>Tweets</p>
@@ -92,18 +100,28 @@
                       </div>
                 <div>
               <div>
-              <h6 class="border-bottom p-2">FOLLOWED BY</h6>
-                  <% Following.all.each do |follower| if follower.id != current_user.id %>
-                    <div class="text-center mt-2">
-                        <% if current_user.followers.any? { |person| person.followed_ids == follower.follower.id }%>
-                          <h6><%= follower.follower.fullname  %></h6>
-                            <%= link_to unfollow_path(follower.follower), method: :delete, class: "follow-icons" do %>
-                               <i class="fas fa-minus-circle fa-2x"></i>
-                            <% end %>
+              <h6 class="border-bottom p-3">FOLLOWED BY</h6>
+                <div>
+                  <% @followers.each do |follower| %>
+                    <div class="follower-description d-flex justify-content-between align-items-center">
+                      <div class="follower-image d-flex align-items-center">
+                        
+                          <%= gravatar_for follower.follower, size: 50 %>
+                      
+                        <h6 class="pl-2"><%= follower.follower.fullname %></h6>
+                      </div>
+                      <% if current_user.followeds.any? { |person| person.followed_id == follower.follower.id }%>
+                        <%= link_to unfollow_path(follower.follower), method: :delete, class: "follow-icons" do %>
+                            <i class="fas fa-minus-circle fa-2x text-primary"></i>
                         <% end %>
+                      <%else%>
+                        <%= link_to follow_path(follower.follower), class: "follow-icons" do %>
+                          <i class="fas fa-plus-circle fa-2x text-primary"></i>
+                        <% end %>
+                      <% end %>
                     </div>
                   <% end %>
-                   <%end%>
+                </div>
               </div>
             </div>  
           </div>     

@@ -1,23 +1,23 @@
-<div class = "container-fluid d-flex">
-  <div class = "row">
-    <div class = "col-2 bg-secondary">
+<div class = "container-fluid main-page d-flex">
+  <div class = "row m-0 h-100">
+    <div class = "col-2 p-0 side-nav">
       <aside>
         <%= render 'sidenav'%>
       </aside>
     </div>
     <div class="col-10 p-0">
       <%= render 'reviews/nav'%> 
-        <div class="row m-0">
-          <div class = "col-8 p-0">
+        <div class="row h-100 m-0">
+          <div class = "col-9 p-0">
           
-            <div class = "home-page border-right">
-              <h5 class="heading-tweet border-bottom p-3 font-weight-bold">TWEETS</h5>
-              <div class="p-3 ">
+            <div class = "home-page border-right p-3 h-100">
+              <h6 class="heading-tweet border-bottom pb-2">TWEETS</h6>
+              <div class="">
                 <%= render 'feed' %>
                 </div>
             </div>
           </div>
-          <div class = "col-4 home-page p-0">
+          <div class = "col-3 home-page">
             <aside>
               <%= render 'reviews/who_to_follow'%>
             </aside>

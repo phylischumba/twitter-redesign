@@ -1,4 +1,4 @@
-<div class= "mb-2">
+<div class= "">
 <%= form_for @review, url: reviews_path do |form| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -11,15 +11,15 @@
       </ul>
     </div>
   <% end %>
-     <div class="bg-white rounded p-2 border">
-      <h6 class="d-block"> Give your review...</h6>
-      <div class = "d-flex align-items-center">
-      <div class="field mr-2 ">
+     <div class="bg-white rounded border p-2">
+      <span class="d-block"> WANT TO REVIEW?</span>
+      <div class = "d-flex flex-column align-items-start">
+      <div class="field w-100">
        
-        <%= form.text_area :Text, placeholder: "Compose your review" %>
+        <%= form.text_area :Text, placeholder: "Compose your review", class: "w-100 p-2" %>
       </div>
       <div class="actions">
-        <%= form.submit 'Tweet review' %>
+        <%= form.submit 'Tweet review', class: "p-2 btn-primary" %>
       </div>
      </div>
      </div>  

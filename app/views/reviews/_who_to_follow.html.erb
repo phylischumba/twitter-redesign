@@ -1,19 +1,19 @@
 <div class="column px-2">
 	<nav class="panel">
-		<h5 class="panel-heading font-weight-bold p-3 border-bottom">WHO TO FOLLOW</h5>
+		<h6 class="panel-heading font-weight-bold p-2 pb-3 border-bottom">WHO TO FOLLOW</h6>
 	<% @users.each do |user| if user != current_user%>
 	  
 		<div class="panel-block p-2"> 
 			<article class="media">
 				<div class="media-left">
 					<div class="picture">
-						<%= gravatar_for current_user, size: 60 %>         
+						<%= gravatar_for current_user, size: 50 %>         
 					</div>
 				</div>
 				<div class="media-content">
 					<div class="content ml-2 d-flex flex-column">	
-							<h6 class="font-weight-bold"><%= link_to user.fullname, user_path(user)%></h6>
-							<span>@<%= user.username%></span>
+							<h6 class="font-weight-bold text-body"><%= link_to user.fullname, user_path(user)%></h6>
+							<span>@<%= user.username %></span>
 					</div>
 				</div>
 			</article>
