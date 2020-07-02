@@ -41,9 +41,6 @@
 - Ruby on Rails v6.0.3
 - Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers and FactoryBot
 
-## Presentation Video
-
-[Video]()
 
 ## Live Demo
 
