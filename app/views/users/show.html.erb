@@ -34,11 +34,9 @@
                               <article class="media">
                                 <div class="media-left">
                                   <div class="picture mr-2">
-                                      <% unless @user[:Photo].nil? %>
-                                          <%= image_tag @user.Photo.thumb.url %>
-                                      <% else %>
-                                        <%= gravatar_for @user, size: 60 %> 
-                                      <%end%>          
+                                      
+                                          <%= current_user_gravatar(@user) %>
+                                              
                                   </div>
                                 </div>
                                 <div class="tweet-content">
@@ -47,9 +45,9 @@
                                   <div class='review-liking'>
                                     <span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
                                     <span><%= like_or_dislike_btn(review) %></span>
-                                    <% if review.likes.any? %>
-                                      <span><%= "#{pluralize(review.likes.size, 'like')}" %></span>
-                                    <% end %>
+                                   
+                                      <span><%= likes_count(review) %></span>
+                                   
                                   </div>
                                 </div>
                               </article>
@@ -74,17 +72,7 @@
                             <%= gravatar_for @user, size: 80 %>
                          
                         </div>
-                        <% unless current_user.id == @user.id %>
-                            <% if current_user.followeds.any? { |person| person.followed.id == @user.id }%>
-                              <%= link_to unfollow_path(@user), method: :delete, class: "font-unfollow-icon" do %>
-                                <i class="fas fa-minus-circle fa-2x text-primary"></i>
-                              <% end %>
-                            <%else%>
-                              <%= link_to follow_path(@user), class: "font-follow-icon" do %>
-                                <i class="fas fa-plus-circle fa-2x text-primary"></i>
-                              <% end %>
-                            <% end %>
-                        <% end %>
+                        <%=  current_user_following?(@user)%>
                         
                       </div>
                       <div class="profile-details text-center pt-2 pr-3">
@@ -98,11 +86,11 @@
                           <p>Tweets</p>
                         </div>
                         <div class = "col-4 border-right pt-2">
-                          <span><%= @user.followers.count%></span>
+                          <span><%= @user.following.count%></span>
                           <p>Following</p>
                         </div>
                         <div class="col-4 pt-2">
-                          <span><%= @user.followeds.count%></span>
+                          <span><%= @user.followers.count%></span>
                           <p>Followers</p>
                         </div>
                       </div>
@@ -118,15 +106,7 @@
                       
                         <h6 class="pl-2"><%= follower.follower.fullname %></h6>
                       </div>
-                      <% if current_user.followeds.any? { |person| person.followed_id == follower.follower.id }%>
-                        <%= link_to unfollow_path(follower.follower), method: :delete, class: "follow-icons" do %>
-                            <i class="fas fa-minus-circle fa-2x text-primary"></i>
-                        <% end %>
-                      <%else%>
-                        <%= link_to follow_path(follower.follower), class: "follow-icons" do %>
-                          <i class="fas fa-plus-circle fa-2x text-primary"></i>
-                        <% end %>
-                      <% end %>
+                      <%=  current_user_following?(follower) %>
                     </div>
                   <% end %>
                 </div>

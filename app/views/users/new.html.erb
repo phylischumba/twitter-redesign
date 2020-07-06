@@ -1,10 +1,5 @@
-
 <center class="col-md-4 mx-auto centred">
     <h2 class="text-center p-2">New User</h2>
     <%= render 'form', user: @user %>
-    <% if logged_in? %>
-        <%= link_to 'Back', users_path, class: "form-control" %>
-    <% elsif !logged_in? %>
-        <%= link_to 'Back', login_path, class: "form-control col-md-3 text-white  mx-auto text-center bg-secondary" %>
-    <% end %>
+    <%= login_signup %>
 </center >

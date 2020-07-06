@@ -18,11 +18,7 @@
 				<article class="media p-2">
 					<div class="media-left">
 						<div class="picture pr-3 ">
-							<% unless review.author[:Photo].nil? %>
-									<%= image_tag review.author.Photo.thumb.url %>
-							<% else %>
-								<%= gravatar_for current_user, size: 60 %> 
-							<%end%>         
+							<%= current_user_gravatar(review.author) %>         
 						</div>
 					</div>
 						<div class="tweet-content">
@@ -31,9 +27,9 @@
 								<div class='review-liking'>
 									<span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
 									<span><%= like_or_dislike_btn(review) %></span>
-									<% if review.likes.any? %>
-                    <span><%= "#{pluralize(review.likes.size, 'like')}" %></span>
-                  <% end %>
+								
+                    <span><%= likes_count(review) %></span>
+                  
 								</div>
 							</div>
 				</article>
