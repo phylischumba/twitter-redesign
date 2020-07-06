@@ -1,12 +1,21 @@
 class FollowingsController < ApplicationController
+  before_action :find_user
+
+  def new
+  end
+
   def create
-    Following.create(follower_id: current_user.id, followed_id: params[:followed_id])
-    redirect_to user_path(params[:followed_id])
+    current_user.follow(@user)
+    redirect_to user_path(@user)
   end
 
   def destroy
-    @followings = Following.find_friend_to_unfollow(current_user.id, params[:followed_id])
-    @followings.destroy
-    redirect_to user_path(params[:followed_id])
+    current_user.unfollow(@user)
+    redirect_to user_path(@user)
+  end
+
+  private
+  def find_user
+    @user = User.find(params[:user_id])
   end
 end
