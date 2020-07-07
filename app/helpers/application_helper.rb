@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+  
   def gravatar_for(user, options = { size: 80 })
     gravatar_id = Digest::MD5.hexdigest(user.username.downcase)
     size = options[:size]
@@ -26,11 +28,19 @@ module ApplicationHelper
   end
 
   def current_user_gravatar(user)
-    if user[:Photo].nil?
-      gravatar_for user, size: 60
-      
+
+    if user.Photo.attached?
+      user_image(user)
     else
-      image_tag user.Photo.thumb.url
+      gravatar_for(user, size: 80 )
+    #   gravatar_for user, size: 60
+      
+    # else
+    #   image_tag(user.Photo, style: 'width:100%') if user.Photo.attached?
     end
+  end
+
+  def user_image(user)
+    image_tag(user.Photo, style: 'width:100%') if user.Photo.attached?
   end
 end
