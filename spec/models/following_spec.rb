@@ -7,7 +7,7 @@ RSpec.describe Following, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:follower).with_foreign_key(:follower_id).class_name('User') }
-    it { should belong_to(:followed).with_foreign_key(:followed_id).class_name('User') }
+    it { should belong_to(:follower).class_name('User') }
+    it { should belong_to(:followed).class_name('User') }
   end
 end

@@ -6,9 +6,9 @@
 #   scenario 'sign up a user' do
 #     user = FactoryBot.create(:user)
 #     visit new_user_path
-#     fill_in 'username', with: user.username
-#     fill_in 'fullname', with: user.fullname
-#     click_link 'Sign up'
+#     fill_in 'user_username', with: user.username
+#     fill_in 'user_fullname', with: user.fullname
+#     click_button 'Create User'
 #     expect(page).to have_content('Log in')
 #   end
 
