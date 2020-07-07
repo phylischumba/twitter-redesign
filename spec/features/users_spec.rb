@@ -1,33 +1,32 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe 'authenticate a user', type: :feature do
-#   let(:user) { User.create(username: 'Mercy', fullname: "Mercy Adelle") }
+RSpec.describe 'authenticate a user', type: :feature do
+  # let(:user) { User.create(username: 'Mercy', fullname: "Mercy Adelle") }
+  before(:each) do
+    @user = FactoryBot.create(:user)
+  end
 
-#   scenario 'sign up a user' do
-#     user = FactoryBot.create(:user)
-#     visit new_user_path
-#     fill_in 'user_username', with: user.username
-#     fill_in 'user_fullname', with: user.fullname
-#     click_button 'Create User'
-#     expect(page).to have_content('Log in')
-#   end
+  scenario 'sign up a user' do
+    visit new_user_path
+    fill_in 'Username', with: @user.username
+    fill_in 'Fullname', with: @user.fullname
+    click_button 'Create User'
+   
+  end
 
-#   scenario 'login a user' do
-#     user = FactoryBot.create(:user)
-#     visit root_url
-#     fill_in 'username', with: user.username
-#     click_button 'Log in'
-#     expect(page).to have_content('Tweets')
+  scenario 'login a user' do
+    visit root_url
+    fill_in 'Username', with: @user.username
+    click_button 'Log in'
+    expect(page).to have_content('HOME')
+  end
 
-#   end
-
-#   scenario 'logout a user' do
-#     user = FactoryBot.create(:user)
-#     visit root_url
-#     fill_in 'username', with: user.username
-#     click_button 'Log in'
-#     click_on 'LOG OUT'
-#     expect(page).to have_content('Username')
-#     expect(page).to have_content('Sign up')
-#   end
-# end
+  scenario 'logout a user' do
+    visit root_url
+    fill_in 'Username', with: @user.username
+    click_button 'Log in'
+    click_link 'LOGOUT'
+    expect(page).to have_content('Username')
+    expect(page).to have_content('Sign up')
+  end
+end
