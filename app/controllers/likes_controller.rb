@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.new(review_id: params[:review_id])
-
     if @like.save
       redirect_to reviews_path, notice: 'You liked a review.'
     else
