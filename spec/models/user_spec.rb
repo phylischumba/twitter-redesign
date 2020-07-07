@@ -16,28 +16,24 @@ RSpec.describe User, type: :model do
     it { should have_many(:following).through(:active_followings).source(:followed) }
   end
 
-# describe 'user class methods' do
-#     before(:each) do
-#       @user1 = FactoryBot.create(:user, username: 'Sunday', fullname: 'Alican Sunday')
-#       @user2 = FactoryBot.create(:user, username: 'john', fullname: 'John Doe')
-#       @follow = FactoryBot.create(:user, username: 'Phyl', fullname: 'Phyl Chumbaa')
-#       @following = FactoryBot.create(:following, follower_id: @user1.id, followed_id: @user2.id)
-#       # @following2 = FactoryBot.create(:following, followed_id: @user2.id, follower_id: @user1.id)
-#     end
-#     describe 'follow' do
-#       it 'checks if current user has followed user' do
-#         expected = @following
-#         actual = @user1.follow(@user2)
-#         expect(actual).to be(@following)
-#       end
-#     end
-#     describe 'unfollow' do
-#       it 'checks if current user has unfollowed user' do
-#         expected = @following
-#         actual = @user1.unfollow(@user2)
-#         expect(expected).to be(@following)
-#       end
-#     end
+describe 'user class methods' do
+    before(:each) do
+      @user1 = User.create!(username: 'Sun', fullname: 'Ali')
+      @user2 = User.create!(username: 'Odong', fullname: 'Mike')
+    end
+    describe 'follow' do
+      it 'checks if current user has followed user' do
+        actual = @user1.follow(@user2)
+        expect(@user1.following?(@user2)).to eq(true)
+      end
+    end
+    describe 'unfollow' do
+      it 'checks if current user has unfollowed user' do
+        actual = @user1.follow(@user2)
+        unfollow = @user1.unfollow(@user2)
+        expect(@user1.following?(@user2)).to eq(false)
+      end
+    end
 
-  # end
+  end
 end

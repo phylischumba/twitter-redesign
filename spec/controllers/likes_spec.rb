@@ -11,7 +11,7 @@ RSpec.describe LikesController, type: :controller do
     login(@user)
   end
 
-  describe 'liking and disliking a post' do
+  describe 'liking and disliking a review' do
     it 'likes a review' do
       post :create, params: { review_id: @review.id, user_id: @user.id }
       expect(response).to redirect_to(reviews_path)

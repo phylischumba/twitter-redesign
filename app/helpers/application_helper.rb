@@ -9,9 +9,9 @@ module ApplicationHelper
   def like_or_dislike_btn(review)
     like = Like.find_by(review: review, user: current_user)
     if like
-      link_to('Dislike', review_like_path(id: like.id, review_id: review.id), method: :delete)
+      link_to('Dislike!', review_like_path(id: like.id, review_id: review.id), method: :delete)
     else
-      link_to('Like', review_likes_path(review_id: review.id), method: :review)
+      link_to('Like!', review_likes_path(review_id: review.id), method: :post)
     end
   end
 
@@ -19,13 +19,9 @@ module ApplicationHelper
     return nil unless current_user.id != @user.id
 
     if current_user.following?(user)
-
-      link_to followings_path,  { controller: 'followings', action: 'destroy', user_id: @user.id },
-                { method: :delete, class: 'fas fa-minus-circle fa-2x ml-2' }
+      link_to('Unfollow', following_path, method: :delete, class: 'btn btn-danger ml-2')
     else
-      link_to followings_path, { controller: 'followings', action: 'create', user_id: @user.id },
-                { method: :post, class: 'fas fa-plus-circle fa-2x ml-2' }
-
+      link_to('Follow', followings_path, method: :create, class: 'btn btn-primary ml-2')
     end
   end
 
