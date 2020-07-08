@@ -1,0 +1,16 @@
+<div class="panel-block p-2"> 
+			<article class="media">
+				<div class="media-left">
+					<div class="picture">
+					 <%= current_user_gravatar(user) %>
+                        
+					</div>
+				</div>
+				<div class="media-content">
+					<div class="content ml-2 d-flex flex-column">	
+							<h6 class="font-weight-bold text-body"><%= user_name(user)%></h6>
+							<span>@<%= user.username %></span>
+					</div>
+				</div>
+			</article>
+</div>
