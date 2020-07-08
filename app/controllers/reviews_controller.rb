@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     @review = Review.new
     @reviews = Review.order('created_at DESC').includes(:author)
-    @users = User.all 
+    @users = User.all
   end
 
   def show; end

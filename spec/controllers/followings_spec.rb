@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe FollowingsController, type: :controller do
-
   def login(user)
     session[:user_id] = user.id
   end
@@ -12,21 +11,16 @@ RSpec.describe FollowingsController, type: :controller do
   end
 
   describe 'POST #create' do
-    
     it 'creates a new following' do
       post :create, params: { follow: { follower_id: @user.id, followed_id: @friend } }
       expect(response).to redirect_to(@user)
     end
- 
-    
   end
 
   describe 'DELETE#destroy' do
-    
     it 'destroys a following' do
       delete :create, params: { follow: { follower_id: @user.id, followed_id: @friend } }
       expect(response).to redirect_to(@user)
     end
-  
   end
 end

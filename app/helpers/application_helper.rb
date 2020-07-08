@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def gravatar_for(user, options = { size: 80 })
     gravatar_id = Digest::MD5.hexdigest(user.username.downcase)
     size = options[:size]
@@ -17,9 +16,7 @@ module ApplicationHelper
   end
 
   def page_error(page)
-    if page.errors.any?
-    render partial: 'errors' 
-    end
+    render partial: 'errors' if page.errors.any?
   end
 
   def current_user_following?(user)
@@ -32,24 +29,20 @@ module ApplicationHelper
     end
   end
 
-   def current_user_gravatar(user)
-
+  def current_user_gravatar(user)
     if user.Photo.attached?
       image_tag(user.Photo, style: 'width:100%')
-    else 
-       gravatar_for(user, size: 80)
-    end 
-   end
+    else
+      gravatar_for(user, size: 80)
+    end
+  end
 
-   def current_user_image(user)
+  def current_user_image(user)
     if user.Coverimage.attached?
       image_tag(user.Coverimage, style: 'width:100%')
-    else 
-      image_tag("https://via.placeholder.com/845x270")
-    
-    end 
-   end
+    else
+      image_tag('https://via.placeholder.com/845x270')
 
-   
-
+    end
+  end
 end

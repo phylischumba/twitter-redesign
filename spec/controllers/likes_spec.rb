@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe LikesController, type: :controller do
-  
   def login(user)
     session[:user_id] = user.id
   end

@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe 'Like', type: :feature do
-
   before(:each) do
     @user = FactoryBot.create(:user)
     @review = FactoryBot.create(:review)

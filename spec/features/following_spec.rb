@@ -2,7 +2,7 @@ RSpec.feature 'Following', type: :feature do
   before(:each) do
     @user = FactoryBot.create(:user)
     @review = FactoryBot.create(:review)
-    @user2 = FactoryBot.create(:user, username: 'Phylis', fullname: "Phylis")
+    @user2 = FactoryBot.create(:user, username: 'Phylis', fullname: 'Phylis')
     visit root_path
     fill_in 'Username', with: @user.username
     click_button 'Log in'

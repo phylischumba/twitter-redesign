@@ -1,13 +1,12 @@
 require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
-  
   def login(user)
     session[:user_id] = user.id
   end
 
   before(:each) do
     @user = FactoryBot.create(:user)
-   
+
     login(@user)
   end
 

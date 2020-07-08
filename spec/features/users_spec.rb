@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'authenticate a user', type: :feature do
-
   before(:each) do
     @user = FactoryBot.create(:user)
   end
@@ -11,7 +10,6 @@ RSpec.describe 'authenticate a user', type: :feature do
     fill_in 'Username', with: @user.username
     fill_in 'Fullname', with: @user.fullname
     click_button 'Create User'
-   
   end
 
   scenario 'login a user' do

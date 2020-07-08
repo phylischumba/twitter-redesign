@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :reviews, foreign_key: 'author_id', class_name: 'Review', dependent: :destroy
   has_many :likes, dependent: :destroy
- 
+
   has_many :active_followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_followings, class_name: 'Following', foreign_key: 'followed_id', dependent: :destroy
 
@@ -18,7 +18,6 @@ class User < ApplicationRecord
     Following.where(followed_id: id).where.not(follower_id: curr_user_id).order(created_at: :desc).limit(5)
   end
 
-   
   def follow(user)
     active_followings.create(followed_id: user.id)
   end

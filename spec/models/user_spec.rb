@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:following).through(:active_followings).source(:followed) }
   end
 
-describe 'user class methods' do
+  describe 'user class methods' do
     before(:each) do
       @user1 = User.create!(username: 'Sun', fullname: 'Ali')
       @user2 = User.create!(username: 'Odong', fullname: 'Mike')
@@ -34,6 +34,5 @@ describe 'user class methods' do
         expect(@user1.following?(@user2)).to eq(false)
       end
     end
-
   end
 end
