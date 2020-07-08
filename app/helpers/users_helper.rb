@@ -1,14 +1,5 @@
 module UsersHelper
 
-  def current_user_gravatar(user)
-    if user[:Photo].nil?
-      gravatar_for user, size: 60
-      
-    else
-      image_tag user.Photo.thumb.url
-    end
-  end
-
   def current_user_name
     current_user.fullname.upcase
   end
@@ -28,4 +19,15 @@ module UsersHelper
       link_to 'Back', login_path, class: "form-control col-md-3 text-white  mx-auto text-center bg-secondary"
     end
   end
+
+  def page_error(page)
+    if page.errors.any?
+    render partial: 'errors' 
+    end
+  end
+
+  def user_name(user)
+    link_to user.fullname, user_path(user)
+  end
+
 end

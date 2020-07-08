@@ -10,4 +10,9 @@ module ReviewsHelper
       render partial: 'who_to_follow'
     end
   end
+  
+  def author_name(review)
+    link_to review.author.fullname.upcase, user_path(review.author)
+  end
+ 
 end
