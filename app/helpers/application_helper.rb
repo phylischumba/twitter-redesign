@@ -47,8 +47,6 @@ module ApplicationHelper
   end
 
   def user_followers(user)
-    if user != current_user
-      render partial: 'users/user_following', locals: { user: user } 
-    end
+    render partial: 'users/user_following', locals: { user: user } if user != current_user
   end
 end
