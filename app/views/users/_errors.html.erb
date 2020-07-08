@@ -1,0 +1,11 @@
+    
+      <div id="error_explanation">
+        <span><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</span>
+
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  

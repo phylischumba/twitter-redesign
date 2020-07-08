@@ -1,9 +1,9 @@
 <div class="side-nav d-flex flex-column text-white-50 h-100">
   <div class="current_user d-flex justify-content-center p-3">
-    <div class="current_picture">
-     <%= current_user_gravatar(current_user) %>        
+    <div class="picture">
+      <%= current_user_gravatar(current_user) %>
     </div>
-    <span class="pt-3 pl-2"><%= current_user_name %></span>
+    <span class="pt-3 pl-2"><%= current_user.fullname.upcase %></span>
   </div>
   <div class="user-followers d-flex w-100 justify-content-around">
       <div class="followers-number pr-5">

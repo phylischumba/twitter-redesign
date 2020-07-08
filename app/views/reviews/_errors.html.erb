@@ -1,0 +1,12 @@
+    
+    <div id="error_explanation bg-light">
+      <h6><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h6>
+
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <span><%= message %></span>
+        <% end %>
+      </ul>
+      
+    </div>
+ 

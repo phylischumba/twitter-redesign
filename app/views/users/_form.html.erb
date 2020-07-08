@@ -1,18 +1,7 @@
 <center class="col-md-4 mx-auto w-100">
 
   <%= form_with(model: user, local: true) do |form| %>
-    <% if user.errors.any? %>
-      <div id="error_explanation">
-        <span><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</span>
-
-        <ul>
-          <% user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
+    <%= page_error(user)%>
     <div class="field">
       <%= form.label :username %>
       <%= form.text_field :username, class: "text-fields p-2" %>
@@ -30,7 +19,7 @@
 
     <div class="form-group field">
       <%= form.label :CoverImage %> <br>
-      <%= form.file_field :CoverImage, class: "text-fields" %>
+      <%= form.file_field :Coverimage, class: "text-fields" %>
     </div>
     </div>
     <div class="actions mr-5 pr-5 pt-2">

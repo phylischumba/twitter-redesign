@@ -12,17 +12,15 @@
 		<h5 class= "border-bottom p-2">New Reviews<h5>
 		<div class="h-100">
 		<% @reviews.each do |review| %>
-
-			<div class="">
-				
+		
 				<article class="media p-2">
 					<div class="media-left">
-						<div class="picture pr-3 ">
+						<div class="picture mr-3 ">
 							<%= current_user_gravatar(review.author) %>         
 						</div>
 					</div>
 						<div class="tweet-content">
-								<span class="d-block"><%= link_to review.author.fullname.upcase, user_path(review.author) %></span>
+								<span class="d-block text-dark"><%= author_name(review) %></span>
 								<span> <%= review.Text %></span>
 								<div class='review-liking'>
 									<span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
@@ -33,7 +31,6 @@
 								</div>
 							</div>
 				</article>
-			</div>
 			
 		<% end %>
 		</div>
