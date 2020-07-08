@@ -13,7 +13,7 @@ module UsersHelper
 
   def login_signup
     if logged_in?
-      link_to 'Back', users_path, class: 'form-control'
+      link_to 'Back', reviews_path, class: 'form-control col-md-3 text-white  mx-auto text-center bg-secondary px-4'
     elsif !logged_in?
       link_to 'Back', login_path, class: 'form-control col-md-3 text-white  mx-auto text-center bg-secondary'
     end
