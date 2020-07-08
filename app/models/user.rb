@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_followings, source: :followed
 
   has_one_attached :Photo
+  has_one_attached :Coverimage
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 15 }
   validates :fullname, presence: true, length: { maximum: 25 }
