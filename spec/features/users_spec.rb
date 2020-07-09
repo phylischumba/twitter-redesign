@@ -9,7 +9,7 @@ RSpec.describe 'authenticate a user', type: :feature do
     visit new_user_path
     fill_in 'Username', with: @user.username
     fill_in 'Fullname', with: @user.fullname
-    click_button 'Create User'
+    click_button 'Sign Up'
   end
 
   scenario 'login a user' do

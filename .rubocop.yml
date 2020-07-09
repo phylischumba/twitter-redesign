@@ -5,12 +5,13 @@ AllCops:
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
+    - "README.md"
     - "node_modules/**/*"
 
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 150
+  Max: 120
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
@@ -47,12 +48,6 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
-Lint/UselessAssignment:
-  Enabled: false
-Lint/Void:
-  Enabled: false
-Lint/ShadowingOuterLocalVariable:
-  Enabled: false
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
@@ -62,8 +57,4 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
-  Enabled: false
-Style/GuardClause:
-  Enabled: false
-Style/DoubleNegation:
   Enabled: false

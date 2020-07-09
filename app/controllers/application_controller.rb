@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!current_user
+    !!current_user # rubocop:disable Style/DoubleNegation
   end
 
   def require_user
-    unless logged_in?
+    unless logged_in? # rubocop:disable Style/GuardClause
       flash[:danger] = 'You must be logged in to perform that task'
       redirect_to root_path
     end

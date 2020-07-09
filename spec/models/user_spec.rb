@@ -20,17 +20,16 @@ RSpec.describe User, type: :model do
     before(:each) do
       @user1 = User.create!(username: 'Sun', fullname: 'Ali')
       @user2 = User.create!(username: 'Odong', fullname: 'Mike')
+      @following = @user1.follow(@user2)
     end
     describe 'follow' do
       it 'checks if current user has followed user' do
-        actual = @user1.follow(@user2)
         expect(@user1.following?(@user2)).to eq(true)
       end
     end
     describe 'unfollow' do
       it 'checks if current user has unfollowed user' do
-        actual = @user1.follow(@user2)
-        unfollow = @user1.unfollow(@user2)
+        @following2 = @user1.unfollow(@user2)
         expect(@user1.following?(@user2)).to eq(false)
       end
     end
