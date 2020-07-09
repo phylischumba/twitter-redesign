@@ -1,0 +1,116 @@
+<div class = "container-fluid d-flex p-0">
+  <div class = "row m-0  h-100 w-100">
+    <div class = "col-2 side-nav p-0 ">
+      <aside>
+        <%= render 'reviews/sidenav'%>
+      </aside>
+    </div>
+        <div class="col-10 p-0">
+          <%= render 'reviews/nav'%> 
+          <div class="row m-0">
+            <div class = "col-9 p-0">
+              <div class = "home-page border-right">
+                <div>
+                  <div class="">
+                    <article>
+                      
+                          <%= current_user_image(@user) %>
+                     
+                    </article>
+                  <div class="box w-100 bg-light p-3">
+                      <h6 class= "border-bottom pb-2 font-weight-bold">WANT TO REVIEW?<h5>
+                        <div class="bg-white p-3 border">
+                          <%= form_for (Review.new)  do |f| %>
+                            <%= f.text_area :Text, class: "w-100", placeholder: "Compose your review" %>
+                            <%= f.submit "Tweet", class: "text-btn btn-primary" %>
+                          <% end %>
+                        </div>
+                        <div class="border p-4 bg-white mt-3">
+                        <h6 class="text-primary p-2 border-bottom font-weight-bold">ALL REVIEWS</h6>
+                          <% @reviews.each do |review| if review.author == @user %>
+                            <div class="pt-2">   
+                              <article class="media">
+                                <div class="media-left">
+                                  <div class="picture mr-2">
+                                      
+                                          <%= current_user_gravatar(@user) %>
+                                              
+                                  </div>
+                                </div>
+                                <div class="tweet-content">
+                                  <span class="d-block font-weight-bold"><%= review.author.fullname.upcase %></span>
+                                  <span><%= review.Text %></span>
+                                  <div class='review-liking'>
+                                    <span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
+                                    <span><%= like_or_dislike_btn(review) %></span>
+                                   
+                                      <span><%= likes_count(review) %></span>
+                                   
+                                  </div>
+                                </div>
+                              </article>
+                            </div>
+                            <% end %> 
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class = "col-3 home-page">
+              <div class="d-flex flex-column align-items-center justify-content-center pt-4">
+                <div  class="user-profile">
+                  <div class="profile-container">
+                      <div class="follow-icon d-flex align-items-center justify-content-center">
+                        
+                        <div class="picture">
+                          
+                            <%= gravatar_for @user, size: 80 %>
+                         
+                        </div>
+                        <%=  current_user_following?(@user)%>
+                        
+                      </div>
+                      <div class="profile-details text-center pt-2 pr-3">
+                        <h6><%= @user.fullname.upcase %></h6>
+                        <span>@<%= @user.username %></span>
+                      </div> 
+                      </div>
+                      <div class="row d-flex border text-center w-100 m-0">
+                        <div class = "col-4 border-right pt-2">
+                          <span><%= @user.reviews.count%></span>
+                          <p>Tweets</p>
+                        </div>
+                        <div class = "col-4 border-right pt-2">
+                          <span><%= @user.following.count%></span>
+                          <p>Following</p>
+                        </div>
+                        <div class="col-4 pt-2">
+                          <span><%= @user.followers.count%></span>
+                          <p>Followers</p>
+                        </div>
+                      </div>
+                <div>
+              <div>
+              <h6 class="border-bottom p-3">FOLLOWED BY</h6>
+                <div>
+                  <% @followers.each do |follower| %>
+                    <div class="follower-description d-flex justify-content-between align-items-center mb-3">
+                      <div class="follower-image d-flex align-items-center">
+                        
+                          <%= current_user_gravatar(@user) %>
+                      
+                        <h6 class="pl-2"><%= link_to follower.follower.fullname %></h6>
+                        
+                      </div>
+                      
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>  
+          </div>     
+  </div>
+</div>

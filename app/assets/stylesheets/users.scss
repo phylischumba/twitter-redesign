@@ -1,0 +1,45 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.field {
+  width: 100%;
+  line-height: 1em;
+}
+.text_fields {
+  width: 100%;
+}
+
+.field label {
+  padding-top: 10px;
+}
+
+.side-nav {
+  background-color: #213246;
+}
+.user-followers {
+  border-top: 2px solid #162730;
+  border-bottom: 2px solid #162730;
+ 
+}
+
+.followers-number {
+  border-right: 2px solid #162730;
+}
+
+.side-link-div {
+  padding: 0.5rem;
+}
+
+.side-link-div:hover {
+  background-color: #50A4E2;
+    a:hover {
+      color: wheat;
+    } 
+}
+.file_form {
+  position: relative;
+    left: -50px;
+
+}
+

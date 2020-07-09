@@ -1,0 +1,32 @@
+<div class = "container-fluid main-page d-flex p-0">
+  <div class = "row m-0 h-100 w-100">
+    <div class = "col-2 p-0 side-nav">
+      <aside>
+        <%= render 'sidenav'%>
+      </aside>
+    </div>
+    <div class="col-10 p-0">
+      <%= render 'reviews/nav'%> 
+        <div class="row h-100 m-0">
+          <div class = "col-9 p-0">
+          
+            <div class = "home-page border-right p-3 h-100">
+              <h6 class="heading-tweet border-bottom pb-2">TWEETS</h6>
+              <div class="">
+                <%= render 'feed' %>
+                </div>
+            </div>
+          </div>
+          <div class = "col-3 home-page">
+            <div class="column px-2">
+              <nav class="panel">
+                <h6 class="panel-heading font-weight-bold p-2 pb-3 border-bottom">WHO TO FOLLOW</h6>
+                <%= render 'users/who_to_follow'%>
+              </nav>
+            </div>
+          </div>
+          </div>
+    </div>
+  </div>
+  
+</div>

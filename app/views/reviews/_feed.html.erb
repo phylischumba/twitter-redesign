@@ -1,0 +1,38 @@
+<div class="">
+
+	<article class="media box">
+		
+		<div class="media-content w-100">
+          <%= render 'form'%>
+		</div>
+	</article>
+
+
+	<div class="box w-100 bg-white border mt-3 ">
+		<h5 class= "border-bottom p-2">New Reviews<h5>
+		<div class="h-100">
+		<% @reviews.each do |review| %>
+		
+				<article class="media p-2">
+					<div class="media-left">
+						<div class="picture mr-3 ">
+							<%= current_user_gravatar(review.author) %>         
+						</div>
+					</div>
+						<div class="tweet-content">
+								<span class="d-block text-dark"><%= author_name(review) %></span>
+								<span> <%= review.Text %></span>
+								<div class='review-liking'>
+									<span class='review-date'> <%= review.created_at.strftime("%Y/%m/%d") %> </span>
+									<span><%= like_or_dislike_btn(review) %></span>
+								
+                    <span><%= likes_count(review) %></span>
+                  
+								</div>
+							</div>
+				</article>
+			
+		<% end %>
+		</div>
+	</div>
+</div>

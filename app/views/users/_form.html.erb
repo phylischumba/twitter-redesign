@@ -1,0 +1,31 @@
+<div class="col-md-4 mx-auto w-100">
+
+  <%= form_with(model: user, local: true) do |form| %>
+    <%= page_error(user)%>
+    <div class="field">
+      <%= form.label :username %>
+      <%= form.text_field :username, class: "text-fields p-2" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :fullname %>
+      <%= form.text_field :fullname, class: "text-fields p-2" %>
+    </div>
+
+    <div class="file_form pl-5 ml-2">
+      <div class="form-group field">
+        <%= form.label :Photo %> <br>
+        <%= form.file_field :Photo, class: "text-fields" %>
+      </div>
+
+      <div class="form-group field">
+        <%= form.label :CoverImage %> <br>
+        <%= form.file_field :Coverimage, class: "text-fields" %>
+      </div>
+      </div>
+    <div class="actions mr-5 pr-5 pt-2">
+      <%= form.submit 'Sign Up', class: 'btn btn-primary px-4' %>
+    </div>
+  <% end %>
+
+</div>
