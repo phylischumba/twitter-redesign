@@ -98,7 +98,7 @@ To deploy your own copy, you can follow the following [steps:](https://devcenter
 
 👤 **Phylis Chepchumba**
 
-- Github: [@Phlylis05](https://github.com/Phlylis05)
+- Github: [@Phlylis05](https://github.com/phylischumba)
 - Linkedin: [PhylisChepchumba](https://linkedin.com/PhylisChepchumba)
 - Twitter: [chepchumba05](https://twitter.com/chepchumba05)
 
